@@ -11,64 +11,32 @@ title Default Programs
 for /f %%A in ('"prompt $H &echo on &for %%B in (1) do rem"') do set BS=%%A
 
 :: =================================================
-:: Detect OS 
+:: Detect OS
 :: =================================================
 setLocal EnableDelayedExpansion
 for /f "tokens=* USEBACKQ" %%f in (`ver`) do set versionOutput=%%f
 
-if not "x!versionOutput:Version 10.0=!"=="x%versionOutput%" (
-    set operatingSystem=ten
-    goto _select
-)
-
-if not "x!versionOutput:Version 6.3=!"=="x%versionOutput%" (
-    set operatingSystem=eight
-    goto _select
-)
-
-if not "x!versionOutput:Version 6.2=!"=="x%versionOutput%" (
-    set operatingSystem=eight
-    goto _select
-)
-
-if not "x!versionOutput:Version 6.1=!"=="x%versionOutput%" (
-    set operatingSystem=seven
-    goto _select
-)
-
-if not "x!versionOutput:Version 6.0=!"=="x%versionOutput%" (
-    set operatingSystem=vista
-    goto _select
-)
-
-if not "x!versionOutput:Version 5.2=!"=="x%versionOutput%" (
-    set operatingSystem=xp
-    goto _select
-)
-
-if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
-    set operatingSystem=xp
-    goto _select
-)
-endlocal
-:_select
 set googleChrome=
 set firefox=
 set java=
 set adobeReader=
 set googleDrive=
-set shockwave=
-set zip=
-set all=
+set flashzone=
+set essentials=
+set alln=
+set ally=
+
 :_menu
 cls
 echo.
+echo   ------------- Default Programs -------------
 echo   Which components would you like to install?
-echo     1  Google Chrome        6  Shockwave
-echo     2  Firefox              7  7-Zip
-echo     3  Java
-echo     4  Adobe Reader         Q  [Quit]
-echo     5  Google Drive         S  [Start]
+echo     1  Google Chrome        7  MSSE
+echo     2  Firefox              N  [All w/o MSSE]
+echo     3  Java                 Y  [All w/ MSSE]
+echo     4  Adobe Reader         S  [Start]
+echo     5  Google Drive         Q  [Quit]
+echo     6  FlashZone
 echo.
 echo   Currently:
 if not "%googleChrome%"=="" (
@@ -86,11 +54,11 @@ if not "%adobeReader%"=="" (
 if not "%googleDrive%"=="" (
     echo       %googleDrive%
 )
-if not "%shockwave%"=="" (
-    echo       %shockwave%
+if not "%flashzone%"=="" (
+    echo       %flashzone%
 )
-if not "%zip%"=="" (
-    echo       %zip%
+if not "%essentials%"=="" (
+    echo       %essentials%
 )
 echo.
 set choice=
@@ -111,10 +79,29 @@ if %choice%==5 (
     set googleDrive=Google Drive
 )
 if %choice%==6 (
-    set shockwave=Shockwave
+    set flashzone=FlashZone
 )
 if %choice%==7 (
-    set zip=7-Zip
+    set essentials=MSSE
+)
+if %choice%==n (
+    set googleChrome=Google Chrome
+    set firefox=Firefox
+    set java=Java
+    set adobeReader=Adobe Reader
+    set googleDrive=Google Drive
+    set flashzone=FlashZone
+    goto _start
+)
+if %choice%==y (
+    set googleChrome=Google Chrome
+    set firefox=Firefox
+    set java=Java
+    set adobeReader=Adobe Reader
+    set googleDrive=Google Drive
+    set flashzone=FlashZone
+    set essentials=MSSE
+    goto _start
 )
 if %choice%==q (
     exit
@@ -123,10 +110,11 @@ if %choice%==s (
     goto _start
 )
 goto _menu
+
 :_start
 cls
 echo.
-echo   Installing Programs: 
+echo   Installing Programs:
 if not "%googleChrome%"=="" (
     echo     Google Chrome...
     chrome.exe
@@ -147,16 +135,16 @@ if not "%googleDrive%"=="" (
     echo     Google Drive...
     drive.exe
 )
-if not "%shockwave%"=="" (
-    echo     Shockwave...
-    shockwave.exe
+if not "%flashzone%"=="" (
+    echo     FlashZone...
+    copy flashzone.exe "%USERPROFILE%\Desktop" >NUL
 )
-if not "%zip%"=="" (
-    echo     7-Zip...
-    zip.exe
+if not "%essentials%"=="" (
+    echo     MSSE...
+    essentials.exe
 )
 echo.
 echo   Default programs have been installed.
 echo.
-set /p var=%BS%  Press Enter to Exit: 
+set /p var=%BS%  Press Enter to Exit:
 exit
