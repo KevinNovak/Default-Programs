@@ -85,22 +85,13 @@ if %choice%==7 (
     set essentials=MSSE
 )
 if %choice%==n (
-    set googleChrome=Google Chrome
-    set firefox=Firefox
-    set java=Java
-    set adobeReader=Adobe Reader
-    set googleDrive=Google Drive
+    set alln=AllN
     set flashzone=FlashZone
     goto _start
 )
 if %choice%==y (
-    set googleChrome=Google Chrome
-    set firefox=Firefox
-    set java=Java
-    set adobeReader=Adobe Reader
-    set googleDrive=Google Drive
+    set ally=AllY
     set flashzone=FlashZone
-    set essentials=MSSE
     goto _start
 )
 if %choice%==q (
@@ -115,6 +106,14 @@ goto _menu
 cls
 echo.
 echo   Installing Programs:
+if not "%alln%"=="" (
+    echo     All Except FlashZone...
+    alln.exe
+)
+if not "%ally%"=="" (
+    echo     All Except FlashZone...
+    ally.exe
+)
 if not "%googleChrome%"=="" (
     echo     Google Chrome...
     chrome.exe
