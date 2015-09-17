@@ -124,26 +124,39 @@ if %choice%==s (
 )
 goto _menu
 :_start
+cls
+echo.
+echo   Installing Programs: 
 if not "%googleChrome%"=="" (
+    echo     Google Chrome...
     chrome.exe
 )
 if not "%firefox%"=="" (
+    echo     Firefox...
     firefox.exe
 )
 if not "%java%"=="" (
+    echo     Java...
     java.exe
 )
 if not "%adobeReader%"=="" (
+    echo     Adobe Reader...
     reader.exe
 )
 if not "%googleDrive%"=="" (
+    echo     Google Drive...
     drive.exe
 )
 if not "%shockwave%"=="" (
+    echo     Shockwave...
     shockwave.exe
 )
 if not "%zip%"=="" (
+    echo     7-Zip...
     zip.exe
 )
-pause
+echo.
+echo   Default programs have been installed.
+echo.
+set /p var=%BS%  Press Enter to Exit: 
 exit
