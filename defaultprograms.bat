@@ -52,6 +52,98 @@ if not "x!versionOutput:Version 5.1=!"=="x%versionOutput%" (
 )
 endlocal
 :_select
-programs.exe
+set googleChrome=
+set firefox=
+set java=
+set adobeReader=
+set googleDrive=
+set shockwave=
+set zip=
+set all=
+:_menu
+cls
+echo.
+echo   Which components would you like to install?
+echo     1  Google Chrome        6  Shockwave
+echo     2  Firefox              7  7-Zip
+echo     3  Java
+echo     4  Adobe Reader         Q  [Quit]
+echo     5  Google Drive         S  [Start]
+echo.
+echo   Currently:
+if not "%googleChrome%"=="" (
+    echo       %googleChrome%
+)
+if not "%firefox%"=="" (
+    echo       %firefox%
+)
+if not "%java%"=="" (
+    echo       %java%
+)
+if not "%adobeReader%"=="" (
+    echo       %adobeReader%
+)
+if not "%googleDrive%"=="" (
+    echo       %googleDrive%
+)
+if not "%shockwave%"=="" (
+    echo       %shockwave%
+)
+if not "%zip%"=="" (
+    echo       %zip%
+)
+echo.
+set choice=
+set /p choice=%BS%  Add: 
+if %choice%==1 (
+    set googleChrome=Google Chrome
+)
+if %choice%==2 (
+    set firefox=Firefox
+)
+if %choice%==3 (
+    set java=Java
+)
+if %choice%==4 (
+    set adobeReader=Adobe Reader
+)
+if %choice%==5 (
+    set googleDrive=Google Drive
+)
+if %choice%==6 (
+    set shockwave=Shockwave
+)
+if %choice%==7 (
+    set zip=7-Zip
+)
+if %choice%==q (
+    exit
+)
+if %choice%==s (
+    goto _start
+)
+goto _menu
+:_start
+if not "%googleChrome%"=="" (
+    chrome.exe
+)
+if not "%firefox%"=="" (
+    firefox.exe
+)
+if not "%java%"=="" (
+    java.exe
+)
+if not "%adobeReader%"=="" (
+    reader.exe
+)
+if not "%googleDrive%"=="" (
+    drive.exe
+)
+if not "%shockwave%"=="" (
+    shockwave.exe
+)
+if not "%zip%"=="" (
+    zip.exe
+)
 pause
 exit
