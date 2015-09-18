@@ -10,6 +10,9 @@ title Default Programs
 :: define a variable containing a single backspace character
 for /f %%A in ('"prompt $H &echo on &for %%B in (1) do rem"') do set BS=%%A
 
+:: =================================================
+:: Variables
+:: =================================================
 set googleChrome=
 set firefox=
 set java=
@@ -20,6 +23,9 @@ set essentials=
 set alln=
 set ally=
 
+:: =================================================
+:: Menu
+:: =================================================
 :_menu
 cls
 echo.
@@ -55,6 +61,9 @@ if not "%essentials%"=="" (
     echo       %essentials%
 )
 echo.
+:: =================================================
+:: Choose what to install
+:: =================================================
 set choice=
 set /p choice=%BS%  Add: 
 if %choice%==1 (
@@ -96,6 +105,9 @@ if %choice%==s (
 )
 goto _menu
 
+:: =================================================
+:: Begin Installation
+:: =================================================
 :_start
 cls
 echo.
@@ -136,8 +148,11 @@ if not "%essentials%"=="" (
     echo     MSSE...
     essentials.exe
 )
+:: =================================================
+:: Ending Dialog
+:: =================================================
 echo.
 echo   Default programs have been installed.
 echo.
-set /p var=%BS%  Press Enter to Exit:
+set /p var=%BS%  Press Enter to Exit: 
 exit
