@@ -112,14 +112,6 @@ goto _menu
 cls
 echo.
 echo   Installing Programs:
-if not "%alln%"=="" (
-    echo     All Except FlashZone...
-    alln.exe
-)
-if not "%ally%"=="" (
-    echo     All Except FlashZone...
-    ally.exe
-)
 if not "%googleChrome%"=="" (
     echo     Google Chrome...
     chrome.exe
@@ -144,15 +136,28 @@ if not "%flashzone%"=="" (
     echo     FlashZone...
     copy flashzone.exe "%USERPROFILE%\Desktop" >NUL
 )
+if not "%alln%"=="" (
+    echo     All w/o MSSE...
+    alln.exe
+)
+if not "%ally%"=="" (
+    echo     All w/ MSSE...
+    ally.exe
+)
 if not "%essentials%"=="" (
     echo     MSSE...
     essentials.exe
 )
+goto _restart
+ 
 :: =================================================
-:: Ending Dialog
+:: Restart Computer
 :: =================================================
+:_restart
 echo.
 echo   Default programs have been installed.
 echo.
-set /p var=%BS%  Press Enter to Exit: 
+set /p input=%BS%  Would you like to restart? (yes/no): 
+if "%input%"=="yes" shutdown -r -t 4 -c "Your computer will restart momentarily"
+if "%input%"=="y" shutdown -r -t 4 -c "Your computer will restart momentarily"
 exit
