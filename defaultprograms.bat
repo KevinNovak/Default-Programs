@@ -10,12 +10,6 @@ title Default Programs
 :: define a variable containing a single backspace character
 for /f %%A in ('"prompt $H &echo on &for %%B in (1) do rem"') do set BS=%%A
 
-:: =================================================
-:: Detect OS
-:: =================================================
-setLocal EnableDelayedExpansion
-for /f "tokens=* USEBACKQ" %%f in (`ver`) do set versionOutput=%%f
-
 set googleChrome=
 set firefox=
 set java=
