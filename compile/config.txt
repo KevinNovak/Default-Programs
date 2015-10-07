@@ -1,4 +1,4 @@
 ;!@Install@!UTF-8!
 Title="Default Programs"
-RunProgram="checkout.bat"
+RunProgram="defaultprograms.bat"
 ;!@InstallEnd@!
